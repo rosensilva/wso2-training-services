@@ -8,7 +8,7 @@ WORKDIR /app
 COPY ./hello.jar /app/hello.jar
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8080
+EXPOSE 80
 
 # Run the jar file
 ENTRYPOINT ["java", "-jar", "hello.jar"]
