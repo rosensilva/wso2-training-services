@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy the jar file into the container at /app
 COPY ./hello.jar /app/hello.jar
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
+# Make port 8080 available to the world outside this container
+EXPOSE 8080
 
 # Create a non-root user with UID 10014 (you can choose any UID that suits your security policies)
 RUN useradd --uid 10014 --create-home --shell /bin/bash appuser
