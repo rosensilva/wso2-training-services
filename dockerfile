@@ -10,15 +10,14 @@ COPY ./hello.jar /app/hello.jar
 # Make port 80 available to the world outside this container
 EXPOSE 80
 
-# Create a user "appuser" with no password, no home directory, and no shell
-# (the user ID 10014 is used here as an example; adjust as necessary)
-RUN useradd --system --uid 10014 --shell /bin/false appuser
+# Create a non-root user with UID 10014 (you can choose any UID that suits your security policies)
+RUN useradd --uid 10014 --create-home --shell /bin/bash appuser
 
-# Change the owner of the /app directory to "appuser"
-RUN chown -R appuser /app
+# Change ownership of the /app directory to the new user
+RUN chown -R appuser:appuser /app
 
-# Run the container as the non-root user "appuser"
-USER appuser
+# Specify the user to run the container
+USER 10014
 
 # Run the jar file
 ENTRYPOINT ["java", "-jar", "hello.jar"]
